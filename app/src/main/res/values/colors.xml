@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#4597B0</color>
+    <color name="colorPrimaryDark">#333333</color>
+    <color name="colorAccent">#4597B0</color>
+    <color name="color_celsius">#4597B0</color>
+    <color name="color_fahrenheit">#F7931E</color>
+    <color name="color_skyBlue">#BF1AB2EF</color>
+    <color name="color_darker_skyBlue">#BF008FC6</color>
+    <color name="color_saturated_skyBlue">#BF0079AE</color>
+    <color name="color_white">#FFFFFF</color>
+    <color name="color_therm_degreeParent">#D0CFCF</color>
+    <color name="color_therm_middle">#E8E8E8</color>
+    <color name="color_therm_outer">#F2F2F2</color>
+    <color name="color_therm_text">#A7A7A7</color>
+    <color name="tansparent">#00000000</color>
+    <color name="lightgray">#F6F6F6</color>
+    <color name="white">#FFFFFF</color>
+    <color name="purple_200">#9C27B0</color>
+    <color name="gray">#C2C2C2</color>
+    <color name="mainorange">#F7931E</color>
+    <color name="transparent">#00000000</color>
+    <color name="graytwo">#D4D1D0</color>
+    <color name="textblack">#161616</color>
+</resources>
