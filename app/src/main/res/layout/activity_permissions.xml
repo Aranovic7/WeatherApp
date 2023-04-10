@@ -16,12 +16,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <com.google.android.material.textview.MaterialTextView
+        <TextView
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Permission Required"
-            android:textColor="@color/textblack"
+            android:textColor="@color/white"
             android:textSize="26sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -58,21 +58,21 @@
                 android:layout_height="match_parent"
                 android:paddingVertical="@dimen/_10sdp">
 
-                <com.google.android.material.textview.MaterialTextView
+                <TextView
                     android:id="@+id/head_cam_permission"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/_20sdp"
                     android:layout_marginTop="@dimen/_5sdp"
                     android:text="Permission Required"
-                    android:textColor="#000"
+                    android:textColor="@color/white"
                     android:textSize="@dimen/_14sdp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <com.google.android.material.textview.MaterialTextView
+                <TextView
                     android:id="@+id/body_cam_permission"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -83,7 +83,7 @@
                     android:lineSpacingExtra="@dimen/_3sdp"
                     android:text="This permission is used to measure the Altitude of your current location. It allows the app to calculate the air pressure of your present
 location and determine exact altitude."
-                    android:textColor="#000"
+                    android:textColor="@color/white"
                     android:textSize="@dimen/_12sdp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -109,9 +109,9 @@ location and determine exact altitude."
                     android:layout_height="@dimen/_44sdp"
 
                     android:layout_marginTop="@dimen/_5sdp"
-                    android:backgroundTint="@color/mainorange"
+                    android:backgroundTint="@color/white"
                     android:text="Allow"
-                    android:textColor="@color/white"
+                    android:textColor="@color/textblack"
                     app:cornerRadius="@dimen/_10sdp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -134,10 +134,10 @@ location and determine exact altitude."
         android:layout_width="@dimen/_200sdp"
         android:layout_height="@dimen/_48sdp"
         android:layout_marginBottom="@dimen/_20sdp"
-        android:backgroundTint="@color/mainorange"
+        android:backgroundTint="@color/white"
         android:enabled="false"
         android:text="Continue"
-        android:textColor="@color/white"
+        android:textColor="@color/textblack"
         app:cornerRadius="@dimen/_10sdp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
