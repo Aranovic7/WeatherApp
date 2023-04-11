@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.weatherapp.R
@@ -92,11 +93,15 @@ class MainFragment : BaseFragment() {
     private fun initButtonRecycler() {
         mButtonAdaptor = ButtonsAdaptor(requireContext())
         binding.moreButtons.apply {
-            layoutManager = GridLayoutManager(requireContext(),2)
+            layoutManager = GridLayoutManager(requireContext(), 2)
             adapter = mButtonAdaptor
         }
         mButtonAdaptor?.onButtonClick = { value, position ->
             val id = value.action as Int
+            if (id == R.id.action_mainFragment_to_fragmentWeatherTemperature) {
+                findNavController().navigate(id)
+            }
+
             Unit
         }
         loadButtons()
@@ -104,7 +109,11 @@ class MainFragment : BaseFragment() {
 
     private fun loadButtons() {
         val list = listOf(
-            ButtonDataClass(getString(R.string.weekly_forecast), R.drawable.ic_tem_weather, R.id.mainFragment),
+            ButtonDataClass(
+                getString(R.string.weekly_forecast),
+                R.drawable.ic_tem_weather,
+                R.id.action_mainFragment_to_fragmentWeatherTemperature
+            ),
             ButtonDataClass(getString(R.string.sunr), R.drawable.sunny, R.id.mainFragment),
             ButtonDataClass(getString(R.string.uv), R.drawable.uv_index, R.id.mainFragment),
             ButtonDataClass(getString(R.string.win), R.drawable.air_fan, R.id.mainFragment),
@@ -138,7 +147,8 @@ class MainFragment : BaseFragment() {
             val address = context?.getCityName(Pair(value?.lat!!, value.lon))
             tvCityName.text = address?.get(0)?.subAdminArea + ", " + address?.get(0)?.countryName
             tvCloudy.text = getString(R.string.cloudy) + " ${value?.current?.clouds}%"
-            tvFeels.text = getString(R.string.feellike) +(value?.current?.feelsLike?.toFloat() ?: 0f).getCelsiusTemperature()
+            tvFeels.text = getString(R.string.feellike) + (value?.current?.feelsLike?.toFloat()
+                ?: 0f).getCelsiusTemperature()
         }
     }
 
