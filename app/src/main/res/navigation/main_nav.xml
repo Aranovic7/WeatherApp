@@ -15,10 +15,20 @@
             app:destination="@id/fragmentWeatherTemperature"
             app:enterAnim="@android:anim/slide_in_left"
             app:exitAnim="@android:anim/slide_out_right" />
+        <action
+            android:id="@+id/action_mainFragment_to_sunFragment"
+            app:destination="@id/sunFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"/>
     </fragment>
     <fragment
         android:id="@+id/fragmentWeatherTemperature"
         android:name="com.example.weatherapp.fragments.FragmentWeatherTemperature"
         android:label="FragmentWeatherTemperature"
         tools:layout="@layout/fragment_weather_temperature" />
+    <fragment
+        android:id="@+id/sunFragment"
+        tools:layout="@layout/fragment_sun"
+        android:name="com.example.weatherapp.fragments.SunFragment"
+        android:label="SunFragment" />
 </navigation>

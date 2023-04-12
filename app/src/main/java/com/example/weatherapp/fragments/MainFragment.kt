@@ -98,7 +98,7 @@ class MainFragment : BaseFragment() {
         }
         mButtonAdaptor?.onButtonClick = { value, position ->
             val id = value.action as Int
-            if (id == R.id.action_mainFragment_to_fragmentWeatherTemperature) {
+            if (id != R.id.mainFragment) {
                 findNavController().navigate(id)
             }
 
@@ -114,7 +114,11 @@ class MainFragment : BaseFragment() {
                 R.drawable.ic_tem_weather,
                 R.id.action_mainFragment_to_fragmentWeatherTemperature
             ),
-            ButtonDataClass(getString(R.string.sunr), R.drawable.sunny, R.id.mainFragment),
+            ButtonDataClass(
+                getString(R.string.sunr),
+                R.drawable.sunny,
+                R.id.action_mainFragment_to_sunFragment
+            ),
             ButtonDataClass(getString(R.string.uv), R.drawable.uv_index, R.id.mainFragment),
             ButtonDataClass(getString(R.string.win), R.drawable.air_fan, R.id.mainFragment),
             ButtonDataClass(getString(R.string.ra), R.drawable.rain, R.id.mainFragment),
@@ -158,7 +162,7 @@ class MainFragment : BaseFragment() {
             .setTitle(getString(R.string.permissionalert))
             .setMessage(message)
             .setPositiveButton(getText(R.string.allow)) { dialog, which -> checkLocationPermission() }
-            .setNegativeButton(getString(R.string.nothank), null)
+            .setNegativeButton("No Thanks", null)
             .show()
     }
 
