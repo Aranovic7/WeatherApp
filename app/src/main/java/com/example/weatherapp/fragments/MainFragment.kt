@@ -119,7 +119,11 @@ class MainFragment : BaseFragment() {
                 R.drawable.sunny,
                 R.id.action_mainFragment_to_sunFragment
             ),
-            ButtonDataClass(getString(R.string.uv), R.drawable.uv_index, R.id.mainFragment),
+            ButtonDataClass(
+                getString(R.string.uv),
+                R.drawable.uv_index,
+                R.id.action_mainFragment_to_UVFragment
+            ),
             ButtonDataClass(getString(R.string.win), R.drawable.air_fan, R.id.mainFragment),
             ButtonDataClass(getString(R.string.ra), R.drawable.rain, R.id.mainFragment),
             ButtonDataClass(getString(R.string.hu), R.drawable.humidity, R.id.mainFragment),
