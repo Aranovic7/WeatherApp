@@ -43,6 +43,11 @@
                         </option>
                         <option name="myPositions">
                           <map>
+                            <entry key="action_mainFragment_to_UVFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                             <entry key="action_mainFragment_to_fragmentWeatherTemperature">
                               <value>
                                 <LayoutPositions />
@@ -65,6 +70,18 @@
                           <Point>
                             <option name="x" value="39" />
                             <option name="y" value="-312" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="windFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="-213" />
+                            <option name="y" value="247" />
                           </Point>
                         </option>
                       </LayoutPositions>

@@ -25,6 +25,11 @@
             app:destination="@id/UVFragment"
             app:enterAnim="@android:anim/slide_in_left"
             app:exitAnim="@android:anim/slide_out_right" />
+        <action
+            android:id="@+id/action_mainFragment_to_windFragment"
+            app:destination="@id/windFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/fragmentWeatherTemperature"
@@ -41,4 +46,9 @@
         android:name="com.example.weatherapp.fragments.UVFragment"
         android:label="UVFragment"
         tools:layout="@layout/fragment_uv" />
+    <fragment
+        android:id="@+id/windFragment"
+        android:name="com.example.weatherapp.fragments.WindFragment"
+        android:label="WindFragment"
+        tools:layout="@layout/fragment_wind" />
 </navigation>
