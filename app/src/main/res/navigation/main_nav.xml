@@ -34,7 +34,12 @@
             android:id="@+id/action_mainFragment_to_humidityFragment"
             app:destination="@id/humidityFragment"
             app:enterAnim="@android:anim/slide_in_left"
-            app:exitAnim="@android:anim/slide_out_right"/>
+            app:exitAnim="@android:anim/slide_out_right" />
+        <action
+            android:id="@+id/action_mainFragment_to_rainFragment"
+            app:destination="@id/rainFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/fragmentWeatherTemperature"
@@ -61,4 +66,9 @@
         android:name="com.example.weatherapp.fragments.HumidityFragment"
         android:label="HumidityFragment"
         tools:layout="@layout/fragment_humidity" />
+    <fragment
+        android:id="@+id/rainFragment"
+        android:name="com.example.weatherapp.fragments.RainFragment"
+        android:label="RainFragment"
+        tools:layout="@layout/fragment_rain" />
 </navigation>

@@ -65,6 +65,11 @@
                                 <LayoutPositions />
                               </value>
                             </entry>
+                            <entry key="action_mainFragment_to_humidityFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                             <entry key="action_mainFragment_to_sunFragment">
                               <value>
                                 <LayoutPositions />
@@ -76,6 +81,18 @@
                               </value>
                             </entry>
                           </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="rainFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="301" />
+                            <option name="y" value="339" />
+                          </Point>
                         </option>
                       </LayoutPositions>
                     </value>
