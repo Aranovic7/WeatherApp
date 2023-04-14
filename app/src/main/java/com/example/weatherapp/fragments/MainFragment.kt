@@ -129,8 +129,12 @@ class MainFragment : BaseFragment() {
                 R.drawable.air_fan,
                 R.id.action_mainFragment_to_windFragment
             ),
+            ButtonDataClass(
+                getString(R.string.hu),
+                R.drawable.humidity,
+                R.id.action_mainFragment_to_humidityFragment
+            ),
             ButtonDataClass(getString(R.string.ra), R.drawable.rain, R.id.mainFragment),
-            ButtonDataClass(getString(R.string.hu), R.drawable.humidity, R.id.mainFragment),
             ButtonDataClass(getString(R.string.pr), R.drawable.pressure, R.id.mainFragment)
         )
         mButtonAdaptor?.submitButtons(list)
