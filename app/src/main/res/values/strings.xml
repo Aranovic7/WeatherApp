@@ -28,4 +28,7 @@
     <string name="map">Map</string>
     <string name="hourly_forecast">Hourly Forecast</string>
     <string name="weekly_forecast">Weekly Forecast</string>
+
+    <string name="places_api_key" translatable="false">AIzaSyDLyPNdQk8qp7kIl3Ewaeu9e6aQko4De5g</string>
+
 </resources>

@@ -106,4 +106,12 @@ open class BaseFragment : Fragment() {
 
         }
     }
+    protected fun loadWeatherInfo(pair: Pair<Double,Double>) {
+        mViewModel.isRun = false
+        mViewModel.setWeatherState(DataStates.Loading)
+        if (!mViewModel.isRun) {
+            mViewModel.isRun = true
+            mViewModel.loadWeatherInfo(pair)
+        }
+    }
 }

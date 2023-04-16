@@ -6,11 +6,14 @@ import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
 import android.provider.Settings
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
@@ -22,10 +25,17 @@ import com.example.weatherapp.dataclasses.ButtonDataClass
 import com.example.weatherapp.dataclasses.WeatherDataClass
 import com.example.weatherapp.sealedclasses.DataStates
 import com.example.weatherapp.utils.*
+import com.google.android.gms.common.api.Status
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.location.LocationSettingsStatusCodes
+import com.google.android.libraries.places.api.Places
+import com.google.android.libraries.places.api.model.Place
+import com.google.android.libraries.places.api.model.TypeFilter
+import com.google.android.libraries.places.widget.AutocompleteSupportFragment
+import com.google.android.libraries.places.widget.listener.PlaceSelectionListener
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.flow.collectLatest
+import java.util.*
 
 
 class MainFragment : BaseFragment() {
@@ -90,6 +100,56 @@ class MainFragment : BaseFragment() {
 
     }
 
+    override fun onStart() {
+        super.onStart()
+        initPlacesApi()
+    }
+
+    private fun initPlacesApi() {
+        if (!Places.isInitialized()) {
+            Places.initialize(requireContext(), getString(R.string.places_api_key), Locale.US)
+        }
+
+        Places.createClient(requireContext())
+        val autocompleteFragment =
+            childFragmentManager.findFragmentById(R.id.add_autocomplete_fragment) as AutocompleteSupportFragment?
+        autocompleteFragment?.apply {
+            val autoFillEditText =
+                this.view?.findViewById<View>(com.google.android.libraries.places.R.id.places_autocomplete_search_input) as EditText
+            autoFillEditText.setHintTextColor(
+                ContextCompat.getColor(
+                    requireContext(),
+                    R.color.white
+                )
+            )
+            setTypeFilter(TypeFilter.CITIES)
+            setHint("Search...")
+            autoFillEditText.setHintTextColor(
+                ContextCompat.getColor(
+                    requireContext(),
+                    R.color.white
+                )
+            )
+            setPlaceFields(
+                listOf(
+                    Place.Field.ID, Place.Field.NAME, Place.Field.LAT_LNG,
+                    Place.Field.ADDRESS, Place.Field.ADDRESS_COMPONENTS
+                )
+            )
+
+            setOnPlaceSelectedListener(object : PlaceSelectionListener {
+                override fun onPlaceSelected(place: Place) {
+                    loadWeatherInfo(Pair(place.latLng?.latitude!!, place.latLng?.longitude!!))
+                }
+
+                override fun onError(status: Status) {
+                }
+            })
+        }
+
+
+    }
+
     private fun initButtonRecycler() {
         mButtonAdaptor = ButtonsAdaptor(requireContext())
         binding.moreButtons.apply {
@@ -134,8 +194,16 @@ class MainFragment : BaseFragment() {
                 R.drawable.humidity,
                 R.id.action_mainFragment_to_humidityFragment
             ),
-            ButtonDataClass(getString(R.string.ra), R.drawable.rain, R.id.action_mainFragment_to_rainFragment),
-            ButtonDataClass(getString(R.string.pr), R.drawable.pressure, R.id.action_mainFragment_to_pressureFragment)
+            ButtonDataClass(
+                getString(R.string.ra),
+                R.drawable.rain,
+                R.id.action_mainFragment_to_rainFragment
+            ),
+            ButtonDataClass(
+                getString(R.string.pr),
+                R.drawable.pressure,
+                R.id.action_mainFragment_to_pressureFragment
+            )
         )
         mButtonAdaptor?.submitButtons(list)
     }
@@ -192,7 +260,6 @@ class MainFragment : BaseFragment() {
                         requireActivity(),
                         REQUEST_LOCATION
                     )
-
                 } catch (e: IntentSender.SendIntentException) {
                 }
             }
