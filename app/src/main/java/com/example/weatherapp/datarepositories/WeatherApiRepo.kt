@@ -7,6 +7,9 @@ import com.example.weatherapp.dataclasses.WeatherDataClass
 import com.example.weatherapp.db.DataBaseUtil
 import com.example.weatherapp.interfaces.ResultCall
 import com.example.weatherapp.utils.getCityName
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -44,7 +47,6 @@ class WeatherApiRepo(
                                 current.feelsLike,
                                 current.humidity,
                                 current.pressure,
-                                current.rain,
                                 current.sunrise,
                                 current.sunset,
                                 current.temp,
@@ -54,7 +56,9 @@ class WeatherApiRepo(
                                 current.windSpeed,
                                 System.currentTimeMillis()
                             )
-                            databaseUtils.dao().insertRecord(history)
+                            CoroutineScope(Dispatchers.IO).launch {
+                                databaseUtils.dao().insertRecord(history)
+                            }
                             resultCall.resultSuccess(dd)
                         }
                     } else {

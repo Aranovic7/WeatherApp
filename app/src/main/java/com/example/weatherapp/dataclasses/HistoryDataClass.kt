@@ -14,7 +14,6 @@ data class HistoryDataClass(
     val feelsLike: Double,
     val humidity: Int,
     val pressure: Int,
-    val rain: Rain,
     val sunrise: Int,
     val sunset: Int,
     val temp: Double,

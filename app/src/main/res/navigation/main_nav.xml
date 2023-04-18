@@ -44,7 +44,12 @@
             android:id="@+id/action_mainFragment_to_pressureFragment"
             app:destination="@id/pressureFragment"
             app:enterAnim="@android:anim/slide_in_left"
-            app:exitAnim="@android:anim/slide_out_right"/>
+            app:exitAnim="@android:anim/slide_out_right" />
+        <action
+            android:id="@+id/action_mainFragment_to_historyFragment"
+            app:destination="@id/historyFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/fragmentWeatherTemperature"
@@ -78,7 +83,12 @@
         tools:layout="@layout/fragment_rain" />
     <fragment
         android:id="@+id/pressureFragment"
-        tools:layout="@layout/fragment_pressure"
         android:name="com.example.weatherapp.fragments.PressureFragment"
-        android:label="PressureFragment" />
+        android:label="PressureFragment"
+        tools:layout="@layout/fragment_pressure" />
+    <fragment
+        android:id="@+id/historyFragment"
+        android:name="com.example.weatherapp.fragments.HistoryFragment"
+        android:label="HistoryFragment"
+        tools:layout="@layout/fragment_history" />
 </navigation>

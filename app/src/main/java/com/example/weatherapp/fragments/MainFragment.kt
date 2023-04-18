@@ -73,6 +73,9 @@ class MainFragment : BaseFragment() {
             root.setOnRefreshListener {
                 loadData()
             }
+            btnHistory.setOnClickListener {
+                findNavController().navigate(R.id.action_mainFragment_to_historyFragment)
+            }
 
         }
 

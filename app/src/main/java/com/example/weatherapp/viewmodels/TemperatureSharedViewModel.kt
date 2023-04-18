@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.weatherapp.dataclasses.HistoryDataClass
 import com.example.weatherapp.dataclasses.WeatherDataClass
 import com.example.weatherapp.datarepositories.WeatherApiRepo
 import com.example.weatherapp.interfaces.ResultCall
@@ -17,6 +18,8 @@ class TemperatureSharedViewModel(private val weatherApiRepo: WeatherApiRepo) : V
     var isRun = false
     private val _weatherData: MutableStateFlow<DataStates> = MutableStateFlow(DataStates.Initial)
     val weatherData = _weatherData.asStateFlow()
+    private val _history: MutableLiveData<List<HistoryDataClass>> = MutableLiveData()
+    val history: LiveData<List<HistoryDataClass>> = _history
 
 
     fun setWeatherState(state: DataStates) {
@@ -39,6 +42,14 @@ class TemperatureSharedViewModel(private val weatherApiRepo: WeatherApiRepo) : V
         })
     }
 
+    fun loadHistory() = viewModelScope.launch(Dispatchers.IO) {
+        _history.postValue(weatherApiRepo.databaseUtils.dao().getRecords())
+    }
+
+    fun deleteHistory(item: HistoryDataClass) = viewModelScope.launch(Dispatchers.IO) {
+        weatherApiRepo.databaseUtils.dao().deleteRecord(item)
+        loadHistory()
+    }
 
 
 }
